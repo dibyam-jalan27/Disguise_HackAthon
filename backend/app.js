@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Import all routes
+const userRoutes = require("./routes/userRoutes");
+
+app.use("/api/v1",userRoutes);
 
 
 
