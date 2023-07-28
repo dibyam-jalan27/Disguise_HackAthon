@@ -4,7 +4,8 @@ import { createRoot } from "react-dom/client";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,10 +14,22 @@ import {
   Link,
 } from "react-router-dom";
 
+
+
+const Layout = () => {
+  return(<div className="app">
+    <Navbar />
+    <Outlet />
+    <hr/>
+    <Footer />
+  </div>
+    
+  )
+}
 const router = createBrowserRouter([
   {
     path:"/",
-    
+    element :<Layout />,
     children : [
       {
         path:"/",

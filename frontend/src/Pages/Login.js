@@ -44,16 +44,7 @@ const Login = () => {
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
           />
         </div>
-        {/* { <div className="mb-6">
-          <label className="block text-gray-700 font-semibold mb-2" htmlFor="password">
-            OTP 
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-          />
-        </div> } */}
+       
          {  !otpCol && <div className="mb-6">
           <label className="block text-gray-700 font-semibold mb-2" htmlFor="password">
             Password
