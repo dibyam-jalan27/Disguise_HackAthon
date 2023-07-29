@@ -1,53 +1,52 @@
 import React from 'react'
-import "./FeaturedProducts.css"
-import picF from "../images/picF.jpg";
+import "./Destination.css";
+import img1 from "../asset/1.jpg"
+import img2 from "../asset/2.jpg"
+import img3 from "../asset/3.jpg"
+import img4 from "../asset/4.jpg"
 import Card from './Card';
-import { Fade } from "react-awesome-reveal";
-import { Zoom } from 'react-awesome-reveal';
 
-const FeaturedProducts = ({type}) => {
+const Destinations = ({type}) => {
 
     const data =[
         {
             id : 1 ,
-            img: picF,
+            img: img1,
             title : "Long sleeve T-Shirt",
             isNew : true ,
-            oldPrice : 20 ,
-            price : 17 
+            oldPrice : 200 ,
+            price : 170
         },
         {
             id : 2 ,
-            img: picF,
+            img: img2,
             title : "Long sleeve T-Shirt",
             isNew : true ,
-            oldPrice : 20 ,
-            price : 17 
+            oldPrice : 250 ,
+            price : 180 
         },
         {
             id : 3 ,
-            img: picF,
+            img: img3,
             title : "Long sleeve T-Shirt",
             isNew : false ,
-            oldPrice : 20 ,
-            price : 17 
+            oldPrice : 300 ,
+            price : 183
         },
         {
             id :  4 ,
-            img: picF,
+            img: img4,
             title : "Long sleeve T-Shirt",
             isNew : false ,
-            oldPrice : 20 ,
-            price : 17 
+            oldPrice : 410 ,
+            price : 350
         }
     ]
   return (
-    <div className='featuredProducts'>
-     
-         
+    <div className='destination'>
        <div className='top'>
-            <h2> {type} Products</h2>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure </p>
+            <h2> Unlock Your Journey: Explore, Plan, Experience! </h2>
+            <p>Santorini, Greece - A captivating island gem in the Aegean Sea, Santorini boasts iconic white-washed buildings perched atop majestic cliffs overlooking crystal-clear waters. The breathtaking sunsets, vibrant bougainvillea-laden alleys, and delectable Mediterranean cuisine make it a dream destination. Indulge in luxurious resorts, explore ancient ruins, and savor the charm of this enchanting paradise</p>
         </div>
       
         <div className='bottom'>
@@ -62,4 +61,4 @@ const FeaturedProducts = ({type}) => {
   )
 }
 
-export default FeaturedProducts
+export default Destinations

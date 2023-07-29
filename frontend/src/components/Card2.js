@@ -3,7 +3,7 @@ import "./Card.css"
 import { Link } from 'react-router-dom'
 import img1 from "../asset/1.jpg"
 import { Fade } from 'react-awesome-reveal'
-const Card = ({item}) => {
+const Card2 = ({item}) => {
   return (
     <Link className='link' to={`/place/${item.id}`}>
           <Fade>
@@ -25,4 +25,4 @@ const Card = ({item}) => {
   )
 }
 
-export default Card
+export default Card2

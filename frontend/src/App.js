@@ -3,6 +3,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer" ;
 
 import {
   createBrowserRouter,
@@ -15,6 +16,7 @@ import {
 } from "react-router-dom";
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
+import Location from './Pages/Location';
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
+          <Route path='/location' element ={<Location />}/>
         </Routes>
+        <Footer />
       </Router>
 
   </div>

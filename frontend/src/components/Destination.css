@@ -1,0 +1,25 @@
+.destination{
+    margin: 100px 200px ;
+
+}
+.destination>.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 40vh;
+}
+.destination>.top>h2{
+    flex: 2;
+    text-transform: capitalize;
+}
+.destination>.top>p{
+    flex: 3;
+    color: grey;
+}
+.bottom{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+}
