@@ -13,6 +13,7 @@ const Reset = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(token)
     // Implement your logic for sending the password reset link here
     axios.post(`/api/v1/resetpassword/${token}`, { password, confirmPassword }).then((res) => {
       console.log(res);
@@ -21,7 +22,9 @@ const Reset = () => {
       console.log(err);
     }
     )
-  };
+    
+  }
+  
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
