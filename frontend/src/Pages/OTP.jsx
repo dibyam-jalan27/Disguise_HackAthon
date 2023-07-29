@@ -8,6 +8,10 @@ const OTP = () => {
   };
   const handleOtpCol =  async () => {
     setOtpCol(true);
+  };
+  const [ email , setEmail] = useState(null);
+  const handleEmailChange = async (e) => {
+        setEmail(e.target.value);
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +24,18 @@ const OTP = () => {
       <div className="bg-white p-8 shadow-md rounded-md w-96">
         <h1 className="text-2xl font-bold mb-6">Forget Password?</h1>
         <form onSubmit={handleSubmit}>
+        <div className="mb-6">
+            <label className="block text-gray-700 font-semibold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+          </div>
           { otpCol && (<div className="mb-6">
             <label className="block text-gray-700 font-semibold mb-2" htmlFor="otp">
               Enter OTP
