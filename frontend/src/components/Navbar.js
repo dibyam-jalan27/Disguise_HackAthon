@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./NavbarStyle.css";
 import { MenuItems } from "./MenuItems";
 import { IconBase } from "react-icons/lib";
@@ -9,10 +9,11 @@ import { MdOutlineMedicalServices} from "react-icons/md";
 import { MdPermContactCalendar} from "react-icons/md";
 import {VscAccount} from "react-icons/vsc";
 import {BsSuitHeart} from "react-icons/bs";
-import {AiOutlineLogin} from 'react-icons/ai';
+import {BiLogInCircle} from 'react-icons/bi';
+import {RiLogoutCircleLine} from 'react-icons/ri';
 
 export default function Navbar() {
-
+  
   return (
     <>
       <nav className="NavbarItems">
@@ -30,10 +31,9 @@ export default function Navbar() {
         <ul className="right">
           <li className="singup">
             <Link to="/signup"><VscAccount/></Link>
-              
-            </li>
+           </li>
             <li>
-              <Link to=""><AiOutlineLogin/></Link>
+            <BiLogInCircle/>
             </li>
             <li>
               <BsSuitHeart/>
@@ -43,3 +43,4 @@ export default function Navbar() {
     </>
   );
 }
+
