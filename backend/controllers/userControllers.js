@@ -67,9 +67,6 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("User not found with this email",404))
     }
 
-    const resetToken = user.getResetPasswordToken();
-
-    await user.save({ validateBeforeSave: false });
 
     const otp = Math.floor(100000 + Math.random() * 900000);
      user.otp=otp;
@@ -102,13 +99,17 @@ exports.verifyotp = catchAsyncErrors(async (req, res, next) => {
       email
     });
 
+    const resetToken = user.getResetPasswordToken();
+    await user.save({ validateBeforeSave: false });
+
+
     if(user.otp!=otp){
         return next(new ErrorHandler("OTP is not correct",404))
     }
 
     res.status(200).json({
         success : true,
-        token : user.resetPasswordToken,
+        token : resetToken,
     })
 })
 
@@ -120,9 +121,9 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     .update(req.params.token)
     .digest("hex");
 
+    console.log(resetPasswordToken)
   const user = await User.findOne({
     resetPasswordToken,
-    resetPasswordExpire: { $gt: Date.now() },
   });
 
   if (!user) {
