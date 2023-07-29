@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-import Navbar from "./components/Navbar";
 
 import {
   createBrowserRouter,
@@ -13,11 +12,23 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import OTP from './Pages/OTP';
+import Reset from './Pages/Reset';
 
+const Layout = () => {
+  return(<div className="app">
+    <Navbar />
+    <Outlet />
+    <hr/>
+    <Footer />
+  </div>
+    
+  )
+}
 const router = createBrowserRouter([
   {
     path:"/",
-    
+    element :<Layout />,
     children : [
       {
         path:"/",
@@ -30,7 +41,13 @@ const router = createBrowserRouter([
       {
         path:"/signup",
         element:<SignUp />
-      } 
+      },{
+        path: "/otp",
+        element : <OTP />
+      },{
+        path :"/reset",
+        element: <Reset />
+      }
     ]
   }
 ])
