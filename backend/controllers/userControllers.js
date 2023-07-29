@@ -141,6 +141,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
+
   
 //Get currently logged in user details => /api/v1/me
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
