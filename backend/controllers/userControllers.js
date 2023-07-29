@@ -67,6 +67,10 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("User not found with this email",404))
     }
 
+    const resetToken = user.getResetPasswordToken();
+
+    await user.save({ validateBeforeSave: false });
+
     const otp = Math.floor(100000 + Math.random() * 900000);
      user.otp=otp;
      await user.save({validateBeforeSave:false});
@@ -82,6 +86,9 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
             message:`Email sent to ${user.email}`,
         })
      } catch (error) {
+      
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
        user.otp = undefined ;
        await user.save({validateBeforeSave:false});
        return next(new ErrorHandler(error.message,500));
@@ -99,6 +106,8 @@ exports.verifyotp = catchAsyncErrors(async (req, res, next) => {
 
     if(user.otp==otp){
         success = true;
+        user.otp = undefined;
+        await user.save({validateBeforeSave:false});
     }
 
     res.status(200).json({
@@ -141,6 +150,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
+
   
 //Get currently logged in user details => /api/v1/me
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
