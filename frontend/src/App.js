@@ -13,8 +13,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-
-
+import OTP from './Pages/OTP';
+import Reset from './Pages/Reset';
 
 const Layout = () => {
   return(<div className="app">
@@ -42,7 +42,13 @@ const router = createBrowserRouter([
       {
         path:"/signup",
         element:<SignUp />
-      } 
+      },{
+        path: "/otp",
+        element : <OTP />
+      },{
+        path :"/reset",
+        element: <Reset />
+      }
     ]
   }
 ])

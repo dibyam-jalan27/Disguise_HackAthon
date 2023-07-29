@@ -45,7 +45,7 @@ const Login = () => {
           />
         </div>
        
-         {  !otpCol && <div className="mb-6">
+         <div className="mb-6">
           <label className="block text-gray-700 font-semibold mb-2" htmlFor="password">
             Password
           </label>
@@ -54,22 +54,10 @@ const Login = () => {
             id="password"
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
           />
-        </div> }
-        {
-            otpInp && (<div className="mb-6">
-          <label className="block text-gray-700 font-semibold mb-2" htmlFor="password">
-            OTP
-          </label>
-          <input
-            type="password"
-            id="otp"
-            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-          />
-        </div>)
-        }
-        
+        </div> 
+
         <div >
-          { !otpCol && ( <div className='flex justify-between items-center' ><span>
+          <div className='flex justify-between items-center' ><span>
           <button
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
             onClick={() => {
@@ -79,15 +67,15 @@ const Login = () => {
             Login
           </button>
           </span>
-          <div
-            
+          <a
+            href='/otp'
             className="text-blue-500 font-semibold hover:text-blue-600 focus:outline-none focus:ring focus:ring-blue-300 hover:cursor-pointer"
             onClick={handleforgetPassword}
           >
             Forgot Password?
+          </a>
           </div>
-          </div>) }
-         {
+         {/* {
             otpCol && !otpInp && ( <div className="flex justify-center items-center">
             <button
             className="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
@@ -106,7 +94,7 @@ const Login = () => {
            Verify
           </button>
           </div>)
-         }
+         } */}
 
         </div>
       </div>
