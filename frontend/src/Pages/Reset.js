@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Reset = () => {
-
-  const [password, setPassword] = useState(null);
+  const { token } = useParams();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -11,7 +14,13 @@ const Reset = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your logic for sending the password reset link here
-    console.log('Password entered' , password);
+    axios.post(`/api/v1/resetpassword/${token}`, { password, confirmPassword }).then((res) => {
+      console.log(res);
+    }
+    ).catch((err) => {
+      console.log(err);
+    }
+    )
   };
 
   return (
@@ -28,6 +37,18 @@ const Reset = () => {
               id="password"
               value={password}
               onChange={handlePassword}
+              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 font-semibold mb-2" htmlFor="password">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>

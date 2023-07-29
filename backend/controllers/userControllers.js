@@ -79,7 +79,7 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         await sendEmail({
             email:user.email,
             subject:"OTP Verification",
-            message:`Your OTP for Reseting your Password is ${otp}`
+            text:`Your OTP for Reseting your Password is ${otp}`
         })
         res.status(200).json({
             success:true,
@@ -97,21 +97,18 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
 
 //verify otp
 exports.verifyotp = catchAsyncErrors(async (req, res, next) => {
-    const { email} = req.body;
+    const { email,otp} = req.body;
     const user = await User.findOne({
       email
     });
 
-    let success=false;
-
-    if(user.otp==otp){
-        success = true;
-        user.otp = undefined;
-        await user.save({validateBeforeSave:false});
+    if(user.otp!=otp){
+        return next(new ErrorHandler("OTP is not correct",404))
     }
 
     res.status(200).json({
-        success,
+        success : true,
+        token : user.resetPasswordToken,
     })
 })
 
@@ -160,3 +157,38 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
+
+//update itinerary
+// Update itinerary and avatar
+exports.putitinerary = catchAsyncErrors(async (req, res, next) => {
+  const { itinerary, id, avatar } = req.body;
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+      return next(
+          new ErrorHandler(
+              "User is not registered",
+              400
+          )
+      );
+  }
+
+  // Update itinerary
+  if (!user.itinerary) {
+      user.itinerary = [];
+  }
+
+  user.itinerary.push({
+      itinerary_id: id,
+  });
+
+
+  await user.save();
+
+  res.status(200).json({
+      success: true,
+      message: "Itinerary updated successfully",
+  });
+});
+
+

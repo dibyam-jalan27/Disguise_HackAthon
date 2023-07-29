@@ -22,6 +22,15 @@ const userSchema = mongoose.Schema({
         minlength: [6, "Your password must be longer than 6 characters"],
         select: false,
     },
+    itinerary:[
+      {
+        itinirary_id:{
+          type: mongoose.Schema.ObjectId,
+          ref: "Itinerary",
+          required: true,
+        }
+      }
+    ],
     // avatar: {
     //     public_id: {
     //         type: String,
@@ -32,6 +41,7 @@ const userSchema = mongoose.Schema({
     //         required: true,
     //     },
     // },
+    
     role: {
         type: String,
         default: "user",
