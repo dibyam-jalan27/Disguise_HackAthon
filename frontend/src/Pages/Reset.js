@@ -14,7 +14,13 @@ const Reset = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your logic for sending the password reset link here
-    console.log(token)
+    axios.post(`/api/v1/resetpassword/${token}`, { password, confirmPassword }).then((res) => {
+      console.log(res);
+    }
+    ).catch((err) => {
+      console.log(err);
+    }
+    )
   };
 
   return (
