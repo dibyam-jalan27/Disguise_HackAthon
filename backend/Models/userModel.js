@@ -22,16 +22,16 @@ const userSchema = mongoose.Schema({
         minlength: [6, "Your password must be longer than 6 characters"],
         select: false,
     },
-    avatar: {
-        public_id: {
-            type: String,
-            required: true,
-        },
-        url: {
-            type: String,
-            required: true,
-        },
-    },
+    // avatar: {
+    //     public_id: {
+    //         type: String,
+    //         required: true,
+    //     },
+    //     url: {
+    //         type: String,
+    //         required: true,
+    //     },
+    // },
     role: {
         type: String,
         default: "user",
@@ -40,8 +40,6 @@ const userSchema = mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
 });
 
 userSchema.pre("save", async function (next) {

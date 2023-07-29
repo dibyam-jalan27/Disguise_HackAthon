@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = () => {
     // Handle sign-up logic here, e.g., sending data to the server
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    const data ={
+      name,
+      email,
+      password
+    }
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios.post("/api/v1/register",data,config).then((res)=>{
+      console.log(res)
+      navigate("/")
+    }).catch((err)=>
+      console.log(err)
+    )
   };
 
   return (
