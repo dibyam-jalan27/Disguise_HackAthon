@@ -11,3 +11,5 @@ exports.newItinerary = catchAsyncErrors(async (req, res, next) => {
         itinerary
     })
 });
+
+

@@ -151,3 +151,38 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
+
+//update itinerary
+// Update itinerary and avatar
+exports.putitinerary = catchAsyncErrors(async (req, res, next) => {
+  const { itinerary, id, avatar } = req.body;
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+      return next(
+          new ErrorHandler(
+              "User is not registered",
+              400
+          )
+      );
+  }
+
+  // Update itinerary
+  if (!user.itinerary) {
+      user.itinerary = [];
+  }
+
+  user.itinerary.push({
+      itinerary_id: id,
+  });
+
+
+  await user.save();
+
+  res.status(200).json({
+      success: true,
+      message: "Itinerary updated successfully",
+  });
+});
+
+
