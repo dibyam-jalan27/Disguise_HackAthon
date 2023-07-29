@@ -17,18 +17,18 @@ const citySchema = mongoose.Schema({
         maxLength: [5, 'City rating cannot exceed 5 characters'],
         default: 0.0
     },
-    images: [
-        {
-            public_id: {
-                type: String,
-                required: true
-            },
-            url: {
-                type: String,
-                required: true
-            }
-        }
-    ],
+    images: {
+        type: String,
+        required: [true, 'Please enter city image'],
+    },
+    lat:{
+        type: Number,
+        required: [true, 'Please enter city latitude'],
+    },
+    lng:{
+        type: Number,
+        required: [true, 'Please enter city longitude'],
+    },
     destination :[
         {
             name: {
@@ -37,28 +37,24 @@ const citySchema = mongoose.Schema({
                 trim: true,
                 maxLength: [100, 'Destination name cannot exceed 100 characters']
             },
-            description: {
-                type: String,
-                required: [true, 'Please enter destination description'],
-            },
             rating: {
                 type: Number,
                 required: [true, 'Please enter destination rating'],
                 maxLength: [5, 'Destination rating cannot exceed 5 characters'],
                 default: 0.0
             },
-            images: [
-                {
-                    public_id: {
-                        type: String,
-                        required: true
-                    },
-                    url: {
-                        type: String,
-                        required: true
-                    }
-                }
-            ],
+            images: {
+                type: String,
+                required: [true, 'Please enter destination image'],
+            },
+            lat:{
+                type: Number,
+                required: [true, 'Please enter destination latitude'],
+            },
+            lng:{
+                type: Number,
+                required: [true, 'Please enter destination longitude'],
+            },
         }
     ],
 });

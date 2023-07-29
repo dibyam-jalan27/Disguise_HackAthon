@@ -4,7 +4,7 @@ const router = express.Router();
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 //Routes
-router.route("/admin/city/new").post(isAuthenticatedUser,authorizeRoles("admin"),newCity);
+router.route("/admin/city/new").post(isAuthenticatedUser,newCity);
 router.route("/city").get(getCities);
 router.route("/city/:id").get(getSingleCity);
 
