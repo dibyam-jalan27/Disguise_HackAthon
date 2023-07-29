@@ -9,6 +9,7 @@ import { MdOutlineMedicalServices} from "react-icons/md";
 import { MdPermContactCalendar} from "react-icons/md";
 import {VscAccount} from "react-icons/vsc";
 import {BsSuitHeart} from "react-icons/bs";
+import {AiOutlineLogin} from 'react-icons/ai';
 
 export default function Navbar() {
 
@@ -28,8 +29,11 @@ export default function Navbar() {
 
         <ul className="right">
           <li className="singup">
-            <Link to="/signup">SignUp</Link>
-              <VscAccount/>
+            <Link to="/signup"><VscAccount/></Link>
+              
+            </li>
+            <li>
+              <Link to=""><AiOutlineLogin/></Link>
             </li>
             <li>
               <BsSuitHeart/>
