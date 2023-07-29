@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Navbar from "./components/Navbar";
 
 import {
   createBrowserRouter,
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
+
     <RouterProvider router={router} />
+    <Navbar/>
   </div>
   );
 }
