@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         path: "/otp",
         element : <OTP />
       },{
-        path :"/reset",
+        path :"/password/reset",
         element: <Reset />
       }
     ]

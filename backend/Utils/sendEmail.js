@@ -1,7 +1,5 @@
-const nodeMailer = require("nodemailer"); 
+const nodemailer = require("nodemailer"); 
 
-  
-  
   // Endpoint for sending OTP
   const sendEmail =async (options) => {
     const transporter = nodemailer.createTransport({
