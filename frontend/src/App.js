@@ -28,7 +28,7 @@ function App() {
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
-          <Route path='/Destination' element={<Destination/>}/>
+          <Route path='/Destination/:destinationId' element={<Destination/>}/>
         </Routes>
       </Router>
   </div>
