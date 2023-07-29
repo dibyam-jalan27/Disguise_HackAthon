@@ -2,6 +2,7 @@ import './App.css';
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Destination from "./Pages/Destination";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer" ;
 
@@ -33,7 +34,6 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-
   </div>
   );
 }
