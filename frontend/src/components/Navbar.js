@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./NavbarStyle.css";
 import { MenuItems } from "./MenuItems";
 import { IconBase } from "react-icons/lib";
@@ -69,3 +69,4 @@ export default function Navbar() {
     </>
   );
 }
+

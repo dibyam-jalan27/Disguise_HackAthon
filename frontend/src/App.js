@@ -2,6 +2,7 @@ import './App.css';
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Destination from "./Pages/Destination";
 import Navbar from "./components/Navbar";
 
 import {
@@ -27,9 +28,9 @@ function App() {
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
+          <Route path='/Destination' element={<Destination/>}/>
         </Routes>
       </Router>
-
   </div>
   );
 }
