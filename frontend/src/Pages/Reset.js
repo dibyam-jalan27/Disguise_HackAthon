@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Reset = () => {
+  const navigate = useNavigate();
   const { token } = useParams();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,18 +16,40 @@ const Reset = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(token)
     // Implement your logic for sending the password reset link here
     axios.post(`/api/v1/resetpassword/${token}`, { password, confirmPassword }).then((res) => {
-      console.log(res);
+      toast.success("Successfully Changed", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/login");
     }
     ).catch((err) => {
-      console.log(err);
+      const error = err.response ? err.response.data.message : err.message;
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
     }
     )
-  };
+    
+  }
+  
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
+      <ToastContainer />
       <div className="bg-white p-8 shadow-md rounded-md w-96">
         <h1 className="text-2xl font-bold mb-6">Reset Password</h1>
         <form onSubmit={handleSubmit}>

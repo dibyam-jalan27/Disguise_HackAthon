@@ -10,9 +10,14 @@ import { MdPermContactCalendar} from "react-icons/md";
 import {VscAccount} from "react-icons/vsc";
 import {BsSuitHeart} from "react-icons/bs";
 import {AiOutlineLogin} from 'react-icons/ai';
+import axios from "axios";
 
 export default function Navbar() {
-
+  axios.get("/api/v1/me").then((res) => {
+    console.log(res.data);
+  }).catch((err) => {
+    console.log(err);
+  });
   return (
     <>
       <nav className="NavbarItems">
