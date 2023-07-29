@@ -2,6 +2,7 @@ import './App.css';
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Photo from "./Pages/Photo.js";
 import Navbar from "./components/Navbar";
 
 import {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/login' element ={<Login/>}/>
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/otp' element ={<OTP/>}/>
+          <Route path='/photos' element ={<Photo/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
         </Routes>
       </Router>

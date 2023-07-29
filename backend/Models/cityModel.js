@@ -17,18 +17,12 @@ const citySchema = mongoose.Schema({
         maxLength: [5, 'City rating cannot exceed 5 characters'],
         default: 0.0
     },
-    images: [
-        {
-            public_id: {
-                type: String,
-                required: true
-            },
-            url: {
-                type: String,
-                required: true
-            }
-        }
-    ],
+    image: {
+        filename: String,
+        description: String,
+        date: Date,
+        data: Buffer, // Binary data for the photo
+    },
     destination :[
         {
             name: {
