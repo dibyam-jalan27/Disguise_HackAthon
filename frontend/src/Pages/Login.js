@@ -76,26 +76,7 @@ const Login = () => {
             Forgot Password?
           </a>
           </div>
-         {/* {
-            otpCol && !otpInp && ( <div className="flex justify-center items-center">
-            <button
-            className="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
-            onClick={handleOtpInp}
-          >
-            Get OTP
-          </button>
-          </div>)
-         }
-         {
-            otpInp && ( <div className="flex justify-center items-center">
-            <button
-            className="bg-blue-600 text-white py-2 px-6 rounded-full hover:bg-green-600 focus:outline-none focus:ring focus:ring-blue-300"
-            onClick={handleOtpInp}
-          >
-           Verify
-          </button>
-          </div>)
-         } */}
+         
 
         </div>
       </div>

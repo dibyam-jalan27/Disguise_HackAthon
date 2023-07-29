@@ -11,10 +11,12 @@ import {
   Outlet ,
   Route,
   Link,
+  Router,
 } from "react-router-dom";
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
-
+import Navbar from './components/Navbar';
+import Footer from './components/Footer' ;
 const Layout = () => {
   return(<div className="app">
     <Navbar />
@@ -52,12 +54,11 @@ const router = createBrowserRouter([
   }
 ])
 function App() {
-  return (
-    <div>
-
+  return (  
+  <Router>
     <RouterProvider router={router} />
-    <Navbar/>
-  </div>
+  </Router>
+  
   );
 }
 
