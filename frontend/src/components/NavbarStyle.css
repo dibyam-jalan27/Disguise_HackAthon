@@ -1,0 +1,20 @@
+h1{
+    display: inline-flex;
+    font-size: 2rem;
+    -webkit-text-stroke: thick; 
+}
+
+nav{
+    
+    display: flex;
+    justify-content: end;
+}
+.nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.nav-menu li{
+    padding: 5px;
+}
