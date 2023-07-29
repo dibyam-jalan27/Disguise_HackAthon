@@ -56,5 +56,97 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
     });
   });
 
+  //Forgot password => /api/v1/forgotpassword
+  exports.forgotpassword = catchAsyncErrors(async (req, res, next) => {
+    const { email} = req.body;
+    const user = await User.findOne({
+      email
+    });
+    
+    if(!user){
+        return next(new ErrorHandler("User not found with this email",404))
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000);
+     user.otp=otp;
+     await user.save({validateBeforeSave:false});
+
+     try {
+        await sendEmail({
+            email:user.email,
+            subject:"OTP Verification",
+            message:`Your OTP for Reseting your Password is ${otp}`
+        })
+        res.status(200).json({
+            success:true,
+            message:`Email sent to ${user.email}`,
+        })
+     } catch (error) {
+       user.otp = undefined ;
+       await user.save({validateBeforeSave:false});
+       return next(new ErrorHandler(error.message,500));
+     }
+});
+
+//verify otp
+exports.verifyotp = catchAsyncErrors(async (req, res, next) => {
+    const { email} = req.body;
+    const user = await User.findOne({
+      email
+    });
+
+    let success=false;
+
+    if(user.otp==otp){
+        success = true;
+    }
+
+    res.status(200).json({
+        success,
+    })
+})
+
+// Reset Password => /api/v1/password/reset/:token
+exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
+  // Hash URL token
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(
+        "Password reset token is invalid or has been expired",
+        400
+      )
+    );
+  }
+
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(new ErrorHandler("Password does not match", 400));
+  }
+
+  // Setup new password
+  user.password = req.body.password;
+
+  user.otp = undefined;
+
+  await user.save();
+
+  sendToken(user, 200, res);
+});
   
-  
+//Get currently logged in user details => /api/v1/me
+exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
