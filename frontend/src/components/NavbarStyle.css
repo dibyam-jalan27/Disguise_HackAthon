@@ -4,7 +4,6 @@
     -webkit-text-stroke: thick;
     
   }
-  
   nav {
     position: absolute;
     display: flex;
@@ -15,6 +14,7 @@
     z-index: 10;
     /* Add some space between the two lists */
     padding-right: 20px;
+    color: whitesmoke;
   }
   
   .nav-menu {
@@ -22,6 +22,12 @@
     display: flex;
     gap: 15px;
 
+  }
+
+  .singup{
+    display: flex;
+    gap: 15px;
+    color: whitesmoke;
   }
   
   .nav-menu li {

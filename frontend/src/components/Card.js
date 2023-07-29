@@ -1,13 +1,13 @@
 import React from 'react'
-import "./Card.css"
+//import "./Card.css"
 import { Link } from 'react-router-dom'
-import picF from "../images/picF.jpg"
-import slider5 from "../images/slider5.jpg"
-import { Fade } from 'react-awesome-reveal'
+//import picF from "../images/picF.jpg"
+//import slider5 from "../images/slider5.jpg"
+//import { Fade } from 'react-awesome-reveal'
 const Card = ({item}) => {
   return (
     <Link className='link' to={`/products/${item.id}`}>
-          <Fade>
+          {/* <Fade>
           <div className='card'>
           <div className='image'>
                 {item.isNew && <span>NEW ARRIVAL</span>}
@@ -20,7 +20,7 @@ const Card = ({item}) => {
             <span className='oldPrice'> ${item.oldPrice}</span>  
           </div>
           </div>
-          </Fade>
+          </Fade> */}
     </Link>
   
   )
