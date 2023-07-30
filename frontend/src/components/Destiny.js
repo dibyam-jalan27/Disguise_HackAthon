@@ -25,7 +25,7 @@ const Destiny = () => {
     return (
       <div className='grid p-4 text-sm mt-5 grid-cols-3 mx-auto md:grid-cols-4'>
           {data.map((city) => {
-            return(<Card3 key={city.id} img={city?.images} title={city.name} description={city.description} rating={city.rating}  />)
+            return(<Card3 id={city._id} img={city?.images} title={city.name} description={city.description} rating={city.rating}  />)
             
           })}
       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from "react";
 // import img1 from "../asset/1.jpg";
 import Rating from "../components/rating";
+import {useParams} from 'react-router-dom'
 import axios from "axios";
 import Card2 from "../components/Card2";
 import img1 from "../asset/1.jpg"
@@ -58,6 +59,7 @@ const Location = () => {
       .catch((err) => {
         console.log(err);
       });
+      console.log(city)
   }, []);
 
   return (
@@ -89,11 +91,11 @@ const Location = () => {
       </div>
     </div>
       <div>
-      <p className="absolute top-28 left-16 text-[60px] font-medium">Jaipur</p>
+      <p className="absolute top-28 left-16 text-[60px] font-medium">{city.name}</p>
         <Rating/>
       </div>
       <div className="absolute top-[500px] left-16 text-[30px] text-4xl text-center text-yellow-800 font-bold text-shadow-lg">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed illum laborum quia, vel modi fuga vitae eum nostrum tenetur nam?
+        {city.description}
       </div>
       <div className='flex gap-10 p-5 justify-between'>
             {data.map((item) => ( 
