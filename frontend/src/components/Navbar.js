@@ -19,7 +19,6 @@ export default function Navbar({ login, setLogin }) {
         console.log(err);
       });
   }
-
   return (
     <>
       <nav className="NavbarItems">

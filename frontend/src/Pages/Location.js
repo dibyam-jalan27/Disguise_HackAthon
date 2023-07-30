@@ -10,8 +10,8 @@ import img4 from "../asset/4.jpg"
 import HomeSection from "../components/HomeSection";
 
 const Location = () => {
-  const {id} = useParams();
-  // const id = "64c51b553936d5188510f8e0";
+  // const {id} = useParams();
+  const id = "64c51b553936d5188510f8e0";
   const [city, setCity] = useState();
 
   const data = [

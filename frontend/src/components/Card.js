@@ -3,6 +3,8 @@ import "./Card.css"
 //import "./Card.css"
 import img1 from "../asset/1.jpg"
 import { Link } from 'react-router-dom'
+//import picF from "../images/picF.jpg"
+//import slider5 from "../images/slider5.jpg"
 import { Fade } from 'react-awesome-reveal'
 const Card = ({item}) => {
   return (
@@ -26,4 +28,4 @@ const Card = ({item}) => {
   )
 }
 
-export default Card
+export default Card;
