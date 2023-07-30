@@ -50,13 +50,6 @@ const Location = () => {
     },
   ];
 
-  if(city){
-    axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${city.lat}&lon=${city.lon}&exclude={part}&appid=8a5104fd27599f05f19a7151e1b1ace0`).then((res)=>{
-    console.log(res.data);
-  }).catch((err)=>{
-    console.log(err.response.data.message);
-  })
-}
 
   useEffect(() => {
     axios
