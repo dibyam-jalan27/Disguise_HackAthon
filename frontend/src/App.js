@@ -18,6 +18,8 @@ import {
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
 import Location from './Pages/Location';
+import About from './Pages/About';
+import ItineraryPage from './Pages/ItineraryPage';
 function App() {
   const [login,setLogin] = React.useState(false);
   useEffect(() => {
