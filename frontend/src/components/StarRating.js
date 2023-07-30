@@ -18,31 +18,31 @@ const StarRating = ({ value, onChange }) => {
 
   const stars = Array.from({ length: 5 }, (_, index) => index + 1);
 
-  return (
-    <div className="flex items-center">
-      {stars.map((starValue) => {
-        const filled = starValue <= (hoverValue || value);
-        const halfFilled = !filled && starValue - 0.5 === hoverValue;
-        return (
-          <span
-            key={starValue}
-            className="cursor-pointer"
-            onClick={() => handleClick(starValue)}
-            onMouseEnter={() => handleMouseEnter(starValue)}
-            onMouseLeave={handleMouseLeave}
-          >
-            {filled ? (
-              <FaStar className="text-yellow-500" />
-            ) : halfFilled ? (
-              <FaStarHalfAlt className="text-yellow-500" />
-            ) : (
-              <FaRegStar className="text-yellow-500" />
-            )}
-          </span>
-        );
-      })}
-    </div>
-  );
+  const renderStars = () => {
+    return stars.map((starValue) => {
+      const filled = starValue <= (hoverValue || value);
+      const halfFilled = !filled && starValue - 0.5 <= (hoverValue || value);
+      return (
+        <span
+          key={starValue}
+          className="cursor-pointer"
+          onClick={() => handleClick(starValue)}
+          onMouseEnter={() => handleMouseEnter(starValue)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {filled ? (
+            <FaStar className="text-yellow-500" />
+          ) : halfFilled ? (
+            <FaStarHalfAlt className="text-yellow-500" />
+          ) : (
+            <FaRegStar className="text-yellow-500" />
+          )}
+        </span>
+      );
+    });
+  };
+
+  return <div className="flex items-center">{renderStars()}</div>;
 };
 
 export default StarRating;

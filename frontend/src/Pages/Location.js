@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 // import img1 from "../asset/1.jpg";
 import Rating from "../components/rating";
 import axios from "axios";
 import Card2 from "../components/Card2";
-import img1 from "../asset/1.jpg";
-import img2 from "../asset/2.jpg";
-import img3 from "../asset/3.jpg";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import img4 from "../asset/4.jpg";
+import img1 from "../asset/1.jpg"
+import img2 from "../asset/2.jpg"
+import img3 from "../asset/3.jpg"
+import img4 from "../asset/4.jpg"
 
 const Location = () => {
   const {id} = useParams();
@@ -87,28 +85,25 @@ const Location = () => {
               <div>
                 <div>Pressure</div>
                 <div>icon</div>
-              </div>
             </div>
-          </div>
-          <div>
-            <p className="absolute top-28 left-16 text-[60px] font-medium">
-              {city.name}
-            </p>
-
-            <Rating />
-          </div>
-          <div className="absolute top-[500px] left-16 text-[30px] text-4xl text-center text-yellow-800 font-bold text-shadow-lg">
-            {city.description}
-          </div>
-          <div className="flex gap-10 p-5 justify-between">
-            {data.map((item) => (
-              <Card2 item={item} key={item.id} />
+      </div>
+    </div>
+      <div>
+      <p className="absolute top-28 left-16 text-[60px] font-medium">Jaipur</p>
+        <Rating/>
+      </div>
+      <div className="absolute top-[500px] left-16 text-[30px] text-4xl text-center text-yellow-800 font-bold text-shadow-lg">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed illum laborum quia, vel modi fuga vitae eum nostrum tenetur nam?
+      </div>
+      <div className='flex gap-10 p-5 justify-between'>
+            {data.map((item) => ( 
+                <Card2 item={item} key={item.id}  />
             ))}
           </div>
-        </div>
-      )}
+          
     </div>
-  );
-};
-
+  )};
+  </div>
+  )
+}
 export default Location;
