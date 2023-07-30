@@ -169,7 +169,7 @@ const Destinations = ({type}) => {
                 <Card item={item} key={item.id}  />
             ))}
             
-        </div> */}
+        </div> 
        
      
     </div>
