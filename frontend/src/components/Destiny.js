@@ -14,6 +14,7 @@ const Destiny = ({keyword,page}) => {
     useEffect(()=>{
       axios.get(`/api/v1/city?keyword=${keyword}&page=${page}`).then((res)=>{
         setData(res.data.cities);
+        console.log(res.data.cities);
       }).catch((err)=>{
         console.log(err);
       })

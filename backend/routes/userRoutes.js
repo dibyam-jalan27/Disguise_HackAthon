@@ -24,9 +24,9 @@ router.route("/sendotp").post(forgotpassword);
 router.route("/verifyotp").post(verifyotp);
 router.route("/resetpassword/:token").post(resetPassword);
 router.route("/me").get(isAuthenticatedUser, getUserDetails);
-router.route("/city/:userId").get(getUserCities);
-router.route("/city/:userId").post(updateCities);
-router.route("/city/:userId/cityId").delete(deleteCity);
+router.route("/cities/:userId").get(getUserCities);
+router.route("/cities/:userId").post(updateCities);
+router.route("/cities/:userId/cityId").delete(deleteCity);
 router.route("/itinerary/:userId").get(getUserItinerary);
 router.route("/itinerary/:userId").post(updateItinerary);
 

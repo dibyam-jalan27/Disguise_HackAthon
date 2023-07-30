@@ -10,8 +10,7 @@ import img4 from "../asset/4.jpg"
 import HomeSection from "../components/HomeSection";
 
 const Location = () => {
-  // const {id} = useParams();
-  const id = "64c51b553936d5188510f8e0";
+   const {id} = useParams();
   const [city, setCity] = useState();
 
   const data = [
@@ -54,12 +53,12 @@ const Location = () => {
     axios
       .get(`/api/v1/city/${id}`)
       .then((res) => {
+        console.log(res.data);
         setCity(res.data.city);
       })
       .catch((err) => {
         console.log(err);
       });
-      console.log(city)
   }, []);
 
   return (
