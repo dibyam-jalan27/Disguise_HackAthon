@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-const StarRating = ({ value, onChange }) => {
+const StarRating = ({ value }) => {
   const [hoverValue, setHoverValue] = useState(0);
 
-  const handleClick = (newValue) => {
-    onChange(newValue);
-  };
 
-  const handleMouseEnter = (newValue) => {
-    setHoverValue(newValue);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverValue(0);
-  };
 
   const stars = Array.from({ length: 5 }, (_, index) => index + 1);
 
@@ -26,9 +16,7 @@ const StarRating = ({ value, onChange }) => {
         <span
           key={starValue}
           className="cursor-pointer"
-          onClick={() => handleClick(starValue)}
-          onMouseEnter={() => handleMouseEnter(starValue)}
-          onMouseLeave={handleMouseLeave}
+
         >
           {filled ? (
             <FaStar className="text-yellow-500" />

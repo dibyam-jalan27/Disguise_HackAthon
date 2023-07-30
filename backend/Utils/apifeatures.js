@@ -21,7 +21,7 @@ class ApiFeatures {
 
     paginate() {
         const page = parseInt(this.queryStr.page, 10) || 1;
-        const limit = 1; // Set the limit to 5 cities per page
+        const limit = 8; // Set the limit to 5 cities per page
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
     

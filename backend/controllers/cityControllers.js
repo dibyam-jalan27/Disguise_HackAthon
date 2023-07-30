@@ -29,8 +29,9 @@ exports.getCities = catchAsyncErrors(async (req, res, next) => {
 
 // Get single city details => /api/v1/city/:id
 exports.getSingleCity = catchAsyncErrors(async (req, res, next) => {
+  console.log(req.params.id);
     const city = await City.findById(req.params.id);
-
+    
     if (!city) {
         return next(new ErrorHandler('City not found', 404));
     }

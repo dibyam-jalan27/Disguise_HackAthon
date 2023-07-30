@@ -8,16 +8,16 @@ router.post('/generateItinerary', async (req, res) => {
   const cityId = req.body.cityId || "64c51b553936d5188510f8e0";
   try {
     // Generate the itinerary based on the cities stored in the database
-    const itineraryData = await generateItinerary(days);
+    const itineraryData = await generateItinerary(days,cityId);
+    
 
     // Save the generated itinerary to the Itinerary collection in MongoDB
     const savedItinerary = await Itinerary.create(itineraryData);
 
     res.status(201).json({ message: 'Itinerary generated and saved successfully!', itinerary: savedItinerary });
   } catch (error) {
-    console.error(error);
     res.status(500).json({
-        error, 
+        error,  
         message: 'Error generating and saving the itinerary.' });
   }
 });
