@@ -6,16 +6,13 @@ import Card3 from './Card3';
 import axios from 'axios';
 
 
-const Destiny = () => {
+const Destiny = ({keyword,page}) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const [data,setData] = useState([]);
 
-       
-    console.log(data);
-
     useEffect(()=>{
-      axios.get("/api/v1/city").then((res)=>{
+      axios.get(`/api/v1/city?keyword=${keyword}&page=${page}`).then((res)=>{
         setData(res.data.cities);
       }).catch((err)=>{
         console.log(err);
