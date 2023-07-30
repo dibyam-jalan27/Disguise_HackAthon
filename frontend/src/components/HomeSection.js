@@ -2,44 +2,32 @@ import React from "react";
 import "./homesection.css";
 import { Link } from "react-router-dom";
 
-const HomeSection = () => {
+const HomeSection = ({ myarr }) => {
+  console.log(myarr);
   return (
     <div className="section">
       <div className="col">
         <div className="row">
-          <img
-            src="https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
-          <button>
-            <div>
-              Sale
-            </div>
+          <img src={myarr[0].images} alt="" />
+          <button onClick={()=>{
+            
+          }}className="relative bottom-5">
+            <div>{myarr[0].name}</div>
           </button>
         </div>
         <div className="row">
-          <img
-            src="https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
-          <button>
-            <div >
-              Women
-            </div>
+          <img src={myarr[1].images} alt="" />
+          <button className="relative bottom-5">
+            <div>{myarr[1].name}</div>
           </button>
         </div>
       </div>
       <div className="col">
         <div className="row">
           {" "}
-          <img
-            src="https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
-          <button>
-            <div>
-              New Season
-            </div>
+          <img src={myarr[2].images} alt="" />
+          <button className="relative bottom-5">
+            <div>{myarr[2].name}</div>
           </button>
         </div>
       </div>
@@ -47,41 +35,26 @@ const HomeSection = () => {
         <div className="row">
           <div className="col">
             <div className="row">
-              <img
-                src="https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                alt=""
-              />
-              <button>
-                <div>
-                  Men
-                </div>
+              <img src={myarr[3].images} alt="" />
+              <button className="relative bottom-5">
+                <div>{myarr[3].name}</div>
               </button>
             </div>
           </div>
           <div className="col">
             <div className="row">
               {" "}
-              <img
-                src="https://images.pexels.com/photos/2703202/pexels-photo-2703202.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                alt=""
-              />
-              <button>
-                <div >
-                  Accessories
-                </div>
+              <img src={myarr[4].images} alt="" />
+              <button className="relative bottom-5">
+                <div>{myarr[4].name}</div>
               </button>
             </div>
           </div>
         </div>
         <div className="row">
-          <img
-            src="https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
-          <button>
-            <div>
-              Shoes
-            </div>
+          <img src={myarr[5].images} alt="" />
+          <button className="relative bottom-5">
+            <div>{myarr[4].name}</div>
           </button>
         </div>
       </div>

@@ -14,10 +14,11 @@ const Destiny = ({keyword,page}) => {
     useEffect(()=>{
       axios.get(`/api/v1/city?keyword=${keyword}&page=${page}`).then((res)=>{
         setData(res.data.cities);
+        console.log(res.data.cities);
       }).catch((err)=>{
         console.log(err);
       })
-    },[])
+    },[keyword,page])
     
     return (
       <div className='grid p-4 text-sm mt-5 grid-cols-3 mx-auto md:grid-cols-4'>
