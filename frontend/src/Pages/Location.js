@@ -2,11 +2,6 @@ import React, { useEffect, useState }  from "react";
 import Rating from "../components/rating";
 import {useParams} from 'react-router-dom';
 import axios from "axios";
-import Card2 from "../components/Card2";
-import img1 from "../asset/1.jpg"
-import img2 from "../asset/2.jpg"
-import img3 from "../asset/3.jpg"
-import img4 from "../asset/4.jpg"
 import HomeSection from "../components/HomeSection";
 // import Interativemap from "../components/Map"
 import { getWeatherData } from '../components/Apidata';
@@ -51,29 +46,6 @@ const Location = () => {
       price: 350,
     },
   ];
-
-  const [weather , setWeather] = useState(null);
-  const [units , setUnits] = useState("metric");
-  const [cityy , setCityy] = useState("Jaipur") ;
-  
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getWeatherData( cityy);
-      setWeather(data);
-      // setCityy(city?.name);
-    };
-    fetchData();
-  } , [cityy]);
-
-  const handleInp = (event)=> {
-    //if enter key is pressed
-    if(event.keyCode === 13 ){
-      const inp_by_user = event.currentTarget.value ;
-      setCityy(inp_by_user);
-      event.currentTarget.blur();
-    }
-  }
   
   
   useEffect(() => {
@@ -127,11 +99,6 @@ const Location = () => {
       <div className="absolute top-[500px] left-16 text-[30px] text-4xl text-center text-yellow-800 font-bold text-shadow-lg">
         {city.description}
       </div>
-      <div className='flex gap-10 p-5 justify-between'>
-            {data.map((item) => ( 
-                <Card2 item={item} key={item.id}  />
-            ))}
-          </div>
           <div>
             <HomeSection myarr={city.destination}/>
           </div>

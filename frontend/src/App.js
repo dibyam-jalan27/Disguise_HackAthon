@@ -2,12 +2,16 @@ import './App.css';
 import React,{useEffect} from 'react'
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import About from "./Pages/About";
+import ItineraryPage from "./Pages/ItineraryPage";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./components/Navbar";
 import About from "./Pages/About";
 import ItineraryPage from './Pages/ItineraryPage';
 import Footer from "./components/Footer" ;
 import axios from "axios";
+import About from "./Pages/About";
+import ItineraryPage from "./Pages/ItineraryPage";
 import {
   createBrowserRouter,
   RouterProvider,

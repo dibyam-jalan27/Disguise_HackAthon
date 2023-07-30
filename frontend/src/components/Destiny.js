@@ -18,6 +18,7 @@ const Destiny = ({keyword,page}) => {
       }).catch((err)=>{
         console.log(err);
       })
+
     },[keyword,page])
     
     return (
