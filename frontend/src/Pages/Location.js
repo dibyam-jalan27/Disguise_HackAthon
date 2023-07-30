@@ -88,9 +88,10 @@ const Location = () => {
                 <Card2 item={item} key={item.id}  />
             ))}
           </div>
-        </div>
+          
     </div>
-  );
-};
-
+  )};
+  </div>
+  )
+}
 export default Location;
