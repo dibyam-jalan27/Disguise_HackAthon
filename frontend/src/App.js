@@ -19,6 +19,8 @@ import {
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
 import Location from './Pages/Location';
+import About from './Pages/About'
+
 function App() {
   const [login,setLogin] = React.useState(false);
   useEffect(() => {
@@ -43,7 +45,6 @@ function App() {
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
           <Route path='/location/:id' element ={<Location />}/>
-
         </Routes>
         <Footer />
       </Router>

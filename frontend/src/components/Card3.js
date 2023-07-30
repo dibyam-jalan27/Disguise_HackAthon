@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const Card3 = ({key , img, title, description,rating }) => {
+const Card3 = ({ id , img, title, description,rating }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -15,7 +15,7 @@ const Card3 = ({key , img, title, description,rating }) => {
 
   return (
     <Link
-        to={`/location/${key}`}
+        to={`/location/${id}`}
       className="relative mx-2 border rounded-lg mb-5 overflow-hidden"
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}

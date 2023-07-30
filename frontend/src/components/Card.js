@@ -1,5 +1,7 @@
 import React from 'react'
 import "./Card.css"
+//import "./Card.css"
+import img1 from "../asset/1.jpg"
 import { Link } from 'react-router-dom'
 import { Fade } from 'react-awesome-reveal'
 const Card = ({item}) => {

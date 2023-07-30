@@ -6,16 +6,13 @@ import Card3 from './Card3';
 import axios from 'axios';
 
 
-const Destiny = () => {
+const Destiny = ({keyword,page}) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const [data,setData] = useState([]);
 
-       
-    console.log(data);
-
     useEffect(()=>{
-      axios.get("/api/v1/city").then((res)=>{
+      axios.get(`/api/v1/city?keyword=${keyword}&page=${page}`).then((res)=>{
         setData(res.data.cities);
       }).catch((err)=>{
         console.log(err);
@@ -25,7 +22,7 @@ const Destiny = () => {
     return (
       <div className='grid p-4 text-sm mt-5 grid-cols-3 mx-auto md:grid-cols-4'>
           {data.map((city) => {
-            return(<Card3 key={city.id} img={city?.images} title={city.name} description={city.description} rating={city.rating}  />)
+            return(<Card3 id={city._id} img={city?.images} title={city.name} description={city.description} rating={city.rating}  />)
             
           })}
       </div>
