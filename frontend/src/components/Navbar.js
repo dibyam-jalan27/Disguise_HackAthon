@@ -4,21 +4,21 @@ import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import { BsSuitHeart } from "react-icons/bs";
-import { AiOutlineLogin } from 'react-icons/ai';
-import { AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 import axios from "axios";
 
 export default function Navbar({ login, setLogin }) {
-
   const logout = () => {
-    axios.get("/api/v1/logout")
+    axios
+      .get("/api/v1/logout")
       .then((res) => {
         setLogin(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
   return (
     <>
       <nav className="NavbarItems">
@@ -37,20 +37,29 @@ export default function Navbar({ login, setLogin }) {
           {login ? (
             <ul className="singup">
               <li>
-                <Link to="/me"><VscAccount /></Link>
+                <Link to="/me">
+                  <VscAccount />
+                </Link>
               </li>
               <li>
-                <Link onClick={logout}><AiOutlineLogout /></Link>
+                <Link onClick={logout}>
+                  <AiOutlineLogout />
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/wishlist">
+                  <BsSuitHeart />
+                </Link>
               </li>
             </ul>
           ) : (
             <li>
-              <Link to="/login"><AiOutlineLogin /></Link>
+              <Link to="/login">
+                <AiOutlineLogin />
+              </Link>
             </li>
           )}
-          <li>
-            <BsSuitHeart />
-          </li>
         </ul>
       </nav>
     </>
