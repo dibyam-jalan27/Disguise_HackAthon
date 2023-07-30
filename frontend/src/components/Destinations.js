@@ -1,3 +1,4 @@
+
 import React from 'react'
 import "./Destination.css";
 import img1 from "../asset/1.jpg"
@@ -42,7 +43,7 @@ const Destinations = ({type}) => {
             price : 350
         }
     ]
-  return (
+    return (
     <div className='destination'>
        <div className='top'>
             <h2> Unlock Your Journey: Explore, Plan, Experience! </h2>

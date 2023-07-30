@@ -5,7 +5,6 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer" ;
-import About from "./Pages/About";
 import axios from "axios";
 import {
   createBrowserRouter,
@@ -19,7 +18,6 @@ import {
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
 import Location from './Pages/Location';
-
 function App() {
   const [login,setLogin] = React.useState(false);
   useEffect(() => {
@@ -44,6 +42,7 @@ function App() {
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
           <Route path='/location/:id' element ={<Location />}/>
+          <Route path='/itinerary' element ={<ItineraryPage />}/>
         </Routes>
         <Footer />
       </Router>

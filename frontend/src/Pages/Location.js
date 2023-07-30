@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from "react";
 import Rating from "../components/rating";
-import {useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom';
 import axios from "axios";
 import Card2 from "../components/Card2";
 import img1 from "../asset/1.jpg"
@@ -73,7 +73,7 @@ const Location = () => {
           <img
             src={city.images}
             alt="first img"
-            className="w-full h-full opacity-80"
+            className="w-full h-screen opacity-80 overflow-hidden"
           />
           <div className="absolute top-16 right-16 w-96 h-96 rounded-[20px] bg-gray-300 opacity-60 ">
             <p className="flex justify-center items-center p-3 text-black text-[2rem]">
