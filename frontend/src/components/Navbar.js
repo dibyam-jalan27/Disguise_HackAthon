@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "./NavbarStyle.css";
 import { MenuItems } from "./MenuItems";
 import { IconBase } from "react-icons/lib";
@@ -15,11 +15,7 @@ import axios from "axios";
 
 export default function Navbar() {
   const [login, setLogin] = React.useState(false);
-  axios.get("/api/v1/me").then((res) => {
-    setLogin(true);
-  }).catch((err) => {
-    setLogin(false);
-  });
+  
 
   const logout = () => {
     axios.get("/api/v1/logout").then((res) => {
@@ -29,6 +25,13 @@ export default function Navbar() {
     });
   }
   
+  useEffect(()=>{
+    axios.get("/api/v1/me").then((res) => {
+      setLogin(true);
+    }).catch((err) => {
+      setLogin(false);
+    });
+  },[])
   return (
     <>
       <nav className="NavbarItems">

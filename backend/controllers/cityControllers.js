@@ -1,6 +1,7 @@
 const ErrorHandler = require("../Utils/errorHandler");
 const City = require("../Models/cityModel");
 const catchAsyncErrors = require("../middleware/catchAsynError")
+const ApiFeatures = require("../Utils/apifeatures");
 //const City = require("../Models/cityModel");
 
 
@@ -16,7 +17,9 @@ exports.newCity = catchAsyncErrors(async (req, res, next) => {
 
 // Get all cities => /api/v1/cities
 exports.getCities = catchAsyncErrors(async (req, res, next) => {
-    const cities = await City.find();
+
+  const apiFeature = new ApiFeatures(City.find(),req.query).search().paginate()
+    const cities = await apiFeature.query;
 
     res.status(200).json({
         success: true,
