@@ -3,9 +3,9 @@ import "./Card.css"
 import { Link } from 'react-router-dom'
 import img1 from "../asset/1.jpg"
 import { Fade } from 'react-awesome-reveal'
-const Card2 = ({item}) => {
+const Card2 = ({item , key}) => {
   return (
-    <Link className='link' to={`/place/${item.id}`}>
+    <Link className='link' to={`/place/${item._id}`}>
           <Fade>
           <div className='card'>
           <div className='image'>

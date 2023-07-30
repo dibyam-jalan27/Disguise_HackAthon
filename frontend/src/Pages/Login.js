@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CircularProgress } from '@mui/material';
 
-const Login = () => {
+const Login = ({setLogin}) => {
 
     const navigate = useNavigate();
     const [email , setEmail ] = useState("");
@@ -39,6 +39,7 @@ const Login = () => {
           draggable: true,
           progress: undefined,
         });
+        setLogin(true);
         navigate("/");
       }
       ).catch((err) => {

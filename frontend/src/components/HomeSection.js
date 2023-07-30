@@ -12,9 +12,9 @@ const HomeSection = () => {
             alt=""
           />
           <button>
-            <Link className="link" to="/location/1">
+            <div>
               Sale
-            </Link>
+            </div>
           </button>
         </div>
         <div className="row">
@@ -23,9 +23,9 @@ const HomeSection = () => {
             alt=""
           />
           <button>
-            <Link to="/location/1" className="link">
+            <div >
               Women
-            </Link>
+            </div>
           </button>
         </div>
       </div>
@@ -37,9 +37,9 @@ const HomeSection = () => {
             alt=""
           />
           <button>
-            <Link to="/location/1" className="link">
+            <div>
               New Season
-            </Link>
+            </div>
           </button>
         </div>
       </div>
@@ -52,9 +52,9 @@ const HomeSection = () => {
                 alt=""
               />
               <button>
-                <Link to="/location/1" className="link">
+                <div>
                   Men
-                </Link>
+                </div>
               </button>
             </div>
           </div>
@@ -66,9 +66,9 @@ const HomeSection = () => {
                 alt=""
               />
               <button>
-                <Link to="/location/1" className="link">
+                <div >
                   Accessories
-                </Link>
+                </div>
               </button>
             </div>
           </div>
@@ -79,9 +79,9 @@ const HomeSection = () => {
             alt=""
           />
           <button>
-            <Link to="/location/1" className="link">
+            <div>
               Shoes
-            </Link>
+            </div>
           </button>
         </div>
       </div>

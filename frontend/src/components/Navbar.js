@@ -1,41 +1,28 @@
-import React,{useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./NavbarStyle.css";
 import { MenuItems } from "./MenuItems";
-import { IconBase } from "react-icons/lib";
-import { Link} from "react-router-dom";
-import { BiHome } from "react-icons/bi";
-import { FcAbout } from "react-icons/fc";
-import { MdOutlineMedicalServices} from "react-icons/md";
-import { MdPermContactCalendar} from "react-icons/md";
-import {VscAccount} from "react-icons/vsc";
-import {BsSuitHeart} from "react-icons/bs";
-import {AiOutlineLogin} from 'react-icons/ai';
-import {AiOutlineLogout} from 'react-icons/ai';
+import { Link } from "react-router-dom";
+import { VscAccount } from "react-icons/vsc";
+import { BsSuitHeart } from "react-icons/bs";
+import { AiOutlineLogin } from 'react-icons/ai';
+import { AiOutlineLogout } from 'react-icons/ai';
 import axios from "axios";
 
-export default function Navbar() {
-  const [login, setLogin] = React.useState(false);
-  
+export default function Navbar({ login, setLogin }) {
 
   const logout = () => {
-    axios.get("/api/v1/logout").then((res) => {
-      setLogin(false);
-    }).catch((err) => {
-      console.log(err);
-    });
+    axios.get("/api/v1/logout")
+      .then((res) => {
+        setLogin(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  
-  useEffect(()=>{
-    axios.get("/api/v1/me").then((res) => {
-      setLogin(true);
-    }).catch((err) => {
-      setLogin(false);
-    });
-  },[])
   return (
     <>
       <nav className="NavbarItems">
-      <h1 className="navbar-logo">Trippy</h1>
+        <h1 className="navbar-logo">Trippy</h1>
         <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (
@@ -45,31 +32,27 @@ export default function Navbar() {
             );
           })}
         </ul>
-          
-        <ul className="right">
-          <li>
 
-          </li>
-        {login?(
-          <ul className="singup">
-          <li>
-            <Link to="/me"><VscAccount/></Link>
-          </li>
-          <li>
-            <Link onClick={logout}><AiOutlineLogout/></Link>
-            </li>
+        <ul className="right">
+          {login ? (
+            <ul className="singup">
+              <li>
+                <Link to="/me"><VscAccount /></Link>
+              </li>
+              <li>
+                <Link onClick={logout}><AiOutlineLogout /></Link>
+              </li>
             </ul>
-            ):(
+          ) : (
             <li>
-              <Link to="/login"><AiOutlineLogin/></Link>
+              <Link to="/login"><AiOutlineLogin /></Link>
             </li>
-            )}
-            <li>
-              <BsSuitHeart/>
+          )}
+          <li>
+            <BsSuitHeart />
           </li>
         </ul>
       </nav>
     </>
   );
 }
-
