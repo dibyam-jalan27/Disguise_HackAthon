@@ -1,5 +1,4 @@
-import React, { useEffect, useState }  from "react";
-// import img1 from "../asset/1.jpg";
+import React, { useEffect, useState,useParams }  from "react";
 import Rating from "../components/rating";
 import axios from "axios";
 import Card2 from "../components/Card2";
@@ -9,8 +8,8 @@ import img3 from "../asset/3.jpg"
 import img4 from "../asset/4.jpg"
 
 const Location = () => {
-  const {id} = useParams();
-  //const id = "64c51b553936d5188510f8e0";
+  // const {id} = useParams();
+  const id = "64c51b553936d5188510f8e0";
   const [city, setCity] = useState();
 
     const data =[

@@ -44,11 +44,8 @@ function App() {
           <Route path='/about' element ={<About/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
-<<<<<<< HEAD
-          <Route path='/location' element ={<Location />}/>
-=======
           <Route path='/location/:id' element ={<Location />}/>
->>>>>>> 911c357cb9663a6b3a3e794c265935d31f610674
+
         </Routes>
         <Footer />
       </Router>
