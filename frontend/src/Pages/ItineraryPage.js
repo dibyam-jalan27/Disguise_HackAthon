@@ -49,8 +49,6 @@ const ItineraryPage = ({}) => {
           {data.map((city , index) => {
       
             return(
-              
-              
                <Card4 id={city._id} img={city?.images} title={city.name} description={city.description} rating={city.rating} arr={arr} setArr={setArr} index={index} />
                )
               }
