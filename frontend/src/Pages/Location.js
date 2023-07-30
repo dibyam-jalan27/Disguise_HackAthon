@@ -12,40 +12,52 @@ const Location = () => {
   const id = "64c51b553936d5188510f8e0";
   const [city, setCity] = useState();
 
-    const data =[
-        {
-            id : 1 ,
-            img: img1,
-            title : "Long sleeve T-Shirt",
-            isNew : true ,
-            oldPrice : 200 ,
-            price : 170
-        },
-        {
-            id : 2 ,
-            img: img2,
-            title : "Long sleeve T-Shirt",
-            isNew : true ,
-            oldPrice : 250 ,
-            price : 180 
-        },
-        {
-            id : 3 ,
-            img: img3,
-            title : "Long sleeve T-Shirt",
-            isNew : false ,
-            oldPrice : 300 ,
-            price : 183
-        },
-        {
-            id :  4 ,
-            img: img4,
-            title : "Long sleeve T-Shirt",
-            isNew : false ,
-            oldPrice : 410 ,
-            price : 350
-        }
-    ]
+  const data = [
+    {
+      id: 1,
+      img: img1,
+      title: "Long sleeve T-Shirt",
+      isNew: true,
+      oldPrice: 200,
+      price: 170,
+    },
+    {
+      id: 2,
+      img: img2,
+      title: "Long sleeve T-Shirt",
+      isNew: true,
+      oldPrice: 250,
+      price: 180,
+    },
+    {
+      id: 3,
+      img: img3,
+      title: "Long sleeve T-Shirt",
+      isNew: false,
+      oldPrice: 300,
+      price: 183,
+    },
+    {
+      id: 4,
+      img: img4,
+      title: "Long sleeve T-Shirt",
+      isNew: false,
+      oldPrice: 410,
+      price: 350,
+    },
+  ];
+
+
+  useEffect(() => {
+    axios
+      .get(`/api/v1/city/${id}`)
+      .then((res) => {
+        setCity(res.data.city);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
