@@ -16,13 +16,9 @@ import {
 } from "react-router-dom";
 import OTP from './Pages/OTP';
 import Reset from './Pages/Reset';
-<<<<<<< HEAD
-import { Locationpage } from './Pages/Locationpage';
-import About from './Pages/About';
-=======
 import Location from './Pages/Location';
+import About from './Pages/About'
 
->>>>>>> 86c102abdb2a30c477d5e16754dfa018da19140e
 function App() {
   return (
     <div>
@@ -35,11 +31,7 @@ function App() {
           <Route path='/about' element ={<About/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
-<<<<<<< HEAD
-          <Route path='/Destination' element={<Locationpage/>}/>
-=======
           <Route path='/location' element ={<Location />}/>
->>>>>>> 86c102abdb2a30c477d5e16754dfa018da19140e
         </Routes>
         <Footer />
       </Router>

@@ -1,43 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import backgroundImage from '../asset/img.jpg';
+import img3 from "../asset/3.jpg"
+import img4 from "../asset/4.jpg"
+import Card3 from './Card3';
+import axios from 'axios';
+
 
 const Destiny = () => {
+
     const [isHovered, setIsHovered] = useState(false);
+    const [data,setData] = useState([]);
+
+       
+    console.log(data);
+
+    useEffect(()=>{
+      axios.get("/api/v1/city").then((res)=>{
+        setData(res.data.cities);
+      }).catch((err)=>{
+        console.log(err);
+      })
+    },[])
     
     return (
-      <div
-        className="relative h-96 bg-cover bg-center flex items-center justify-between text-white cursor-pointer"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <div className="p-6">
-          <h2 className="text-3xl font-semibold mb-2">Title Line 1</h2>
-          <h2 className="text-2xl font-semibold mb-4">Title Line 2</h2>
-          <div className="flex items-center mb-2">
-            <span className="mr-2">Rating:</span>
-            <span>4.5</span>
-          </div>
-          <div className="flex items-center mb-4">
-            <span className="mr-2">Review:</span>
-            <span>Excellent</span>
-          </div>
-        </div>
-  
-     <div className={`hover:${isHovered}`}>
-       { isHovered && (   <div className="p-6 bg-black bg-opacity-50 backdrop-blur-lg rounded-lg absolute right-6 bottom-6">
-            {/* Small image */}
-            <img src="/path/to/small-image.jpg" alt="Small" className="w-16 h-16 mb-2 rounded" />
-            {/* Additional text */}
-            <p className="text-sm mb-2">Additional text and information</p>
-            {/* Rating */}
-            <div className="flex items-center">
-              <span className="mr-2">Rating:</span>
-              <span>4.8</span>
-            </div>
-          </div>)
-       }
-     </div>
-  
+      <div className='grid p-4 text-sm mt-5 grid-cols-3 mx-auto md:grid-cols-4'>
+          {data.map((city) => {
+            return(<Card3 key={city.id} img={city?.images} title={city.name} description={city.description} rating={city.rating}  />)
+            
+          })}
       </div>
-    );
+       );
   };
   export default Destiny ;
