@@ -6,6 +6,7 @@ import img1 from "../asset/1.jpg"
 import img2 from "../asset/2.jpg"
 import img3 from "../asset/3.jpg"
 import img4 from "../asset/4.jpg"
+import HomeSection from "../components/HomeSection";
 
 const Location = () => {
   // const {id} = useParams();
@@ -99,7 +100,9 @@ const Location = () => {
                 <Card2 item={item} key={item.id}  />
             ))}
           </div>
-          
+          <div>
+            <HomeSection />
+          </div>
     </div>
   )};
   </div>

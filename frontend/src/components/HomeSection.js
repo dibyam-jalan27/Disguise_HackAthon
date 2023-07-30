@@ -1,11 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 import "./homesection.css";
-import { div } from "react-router-dom";
-=======
-//import "./Categories.css";
 import { Link } from "react-router-dom";
->>>>>>> 911c357cb9663a6b3a3e794c265935d31f610674
 
 const HomeSection = () => {
   return (
