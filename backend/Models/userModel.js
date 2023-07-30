@@ -31,6 +31,15 @@ const userSchema = mongoose.Schema({
         }
       }
     ],
+    cities:[
+      {
+        city_id:{
+          type: mongoose.Schema.ObjectId,
+          ref: "City",
+          required: true,
+        }
+      }
+    ],
     // avatar: {
     //     public_id: {
     //         type: String,

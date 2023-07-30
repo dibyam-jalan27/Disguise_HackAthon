@@ -4,9 +4,9 @@ async function generateItinerary(days,cityId) {
   if (days === 0 ) {
     return [];
   }
-
-  const cities = await City.findById(cityId);
-  if (!cities) {
+  console.log(cityId)
+  const city = await City.findById(cityId);
+  if (!city) {
     throw new Error('No cities found in the database.');
   }
 
@@ -15,7 +15,6 @@ async function generateItinerary(days,cityId) {
   for (let i = 1; i <= days; i++) {
     const dailyItinerary = {};
 
-    cities.forEach((city) => {
       const numDestinations = city.destination.length;
       const randomDestinationIndex = Math.floor(Math.random() * numDestinations);
       const randomDestination = city.destination[randomDestinationIndex];
@@ -28,7 +27,6 @@ async function generateItinerary(days,cityId) {
         lat: randomDestination.lat,
         lng: randomDestination.lng,
       };
-    });
 
     itinerary.push({
       day: `Day ${i}`,

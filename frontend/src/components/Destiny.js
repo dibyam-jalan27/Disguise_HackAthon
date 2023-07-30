@@ -17,7 +17,7 @@ const Destiny = ({keyword,page}) => {
       }).catch((err)=>{
         console.log(err);
       })
-    },[])
+    },[keyword,page])
     
     return (
       <div className='grid p-4 text-sm mt-5 grid-cols-3 mx-auto md:grid-cols-4'>

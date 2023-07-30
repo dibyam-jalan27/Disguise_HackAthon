@@ -159,37 +159,48 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-//update itinerary
-// Update itinerary and avatar
-exports.putitinerary = catchAsyncErrors(async (req, res, next) => {
-  const { itinerary, id, avatar } = req.body;
-  const user = await User.findById(req.user.id);
+exports.getUserCities = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.params.userId;
+  const user = await User.findById(userId).populate('cities.city_id');
+  res.json(user.cities);
+})
 
-  if (!user) {
-      return next(
-          new ErrorHandler(
-              "User is not registered",
-              400
-          )
-      );
-  }
+exports.updateCities = catchAsyncErrors(async (req, res, next) => {
+  const { cityId } = req.body;
+  const userId = req.params.userId;
 
-  // Update itinerary
-  if (!user.itinerary) {
-      user.itinerary = [];
-  }
-
-  user.itinerary.push({
-      itinerary_id: id,
-  });
-
-
-  await user.save();
+  // Update the user's wishlist array with the new cityId
+  await User.findByIdAndUpdate(userId, { $addToSet: { cities: { city_id: cityId } } });
 
   res.status(200).json({
-      success: true,
-      message: "Itinerary updated successfully",
+    success: true,
   });
-});
+})
 
+exports.deleteCity = catchAsyncErrors(async (req, res, next) => {
+  const {userId, cityId} = req.params;
+  
+  await User.findByIdAndUpdate(userId, { $pull: { cities: { city_id: cityId } } });
 
+  res.status(200).json({
+    success: true,
+  });
+})
+
+exports.getUserItinerary = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.params.userId;
+  const user = await User.findById(userId).populate('cities.city_id');
+  res.json(user.itinerary);
+})
+
+exports.updateItinerary = catchAsyncErrors(async (req, res, next) => {
+  const { itineraryId } = req.body;
+  const userId = req.params.userId;
+
+  // Update the user's wishlist array with the new cityId
+  await User.findByIdAndUpdate(userId, { $addToSet: { itinerary: { itinirary_id: itineraryId } } });
+
+  res.status(200).json({
+    success: true,
+  });
+})

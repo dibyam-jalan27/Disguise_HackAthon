@@ -1,8 +1,20 @@
-const express = require ("express");
-const { registerUser, loginUser, logout ,forgotpassword, verifyotp, resetPassword, getUserDetails} = require("../controllers/userControllers");
+const express = require("express");
+const {
+  registerUser,
+  loginUser,
+  logout,
+  forgotpassword,
+  verifyotp,
+  resetPassword,
+  getUserDetails,
+  getUserCities,
+  updateCities,
+  deleteCity,
+  getUserItinerary,
+  updateItinerary,
+} = require("../controllers/userControllers");
 const router = express.Router();
 const { isAuthenticatedUser } = require("../middleware/auth");
-
 
 //Routes
 router.route("/register").post(registerUser);
@@ -11,6 +23,11 @@ router.route("/logout").get(logout);
 router.route("/sendotp").post(forgotpassword);
 router.route("/verifyotp").post(verifyotp);
 router.route("/resetpassword/:token").post(resetPassword);
-router.route("/me").get(isAuthenticatedUser,getUserDetails);
+router.route("/me").get(isAuthenticatedUser, getUserDetails);
+router.route("/city/:userId").get(getUserCities);
+router.route("/city/:userId").post(updateCities);
+router.route("/city/:userId/cityId").delete(deleteCity);
+router.route("/itinerary/:userId").get(getUserItinerary);
+router.route("/itinerary/:userId").post(updateItinerary);
 
 module.exports = router;
