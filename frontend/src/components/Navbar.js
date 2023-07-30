@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./NavbarStyle.css";
 import { MenuItems } from "./MenuItems";
 import { IconBase } from "react-icons/lib";
@@ -10,9 +10,25 @@ import { MdPermContactCalendar} from "react-icons/md";
 import {VscAccount} from "react-icons/vsc";
 import {BsSuitHeart} from "react-icons/bs";
 import {AiOutlineLogin} from 'react-icons/ai';
+import {AiOutlineLogout} from 'react-icons/ai';
+import axios from "axios";
 
 export default function Navbar() {
+  const [login, setLogin] = React.useState(false);
+  axios.get("/api/v1/me").then((res) => {
+    setLogin(true);
+  }).catch((err) => {
+    setLogin(false);
+  });
 
+  const logout = () => {
+    axios.get("/api/v1/logout").then((res) => {
+      setLogin(false);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+  
   return (
     <>
       <nav className="NavbarItems">
@@ -26,15 +42,25 @@ export default function Navbar() {
             );
           })}
         </ul>
-
+          
         <ul className="right">
-          <li className="singup">
-            <Link to="/signup"><VscAccount/></Link>
-              
+          <li>
+
+          </li>
+        {login?(
+          <ul className="singup">
+          <li>
+            <Link to="/me"><VscAccount/></Link>
+          </li>
+          <li>
+            <Link onClick={logout}><AiOutlineLogout/></Link>
             </li>
+            </ul>
+            ):(
             <li>
-              <Link to=""><AiOutlineLogin/></Link>
+              <Link to="/login"><AiOutlineLogin/></Link>
             </li>
+            )}
             <li>
               <BsSuitHeart/>
           </li>
@@ -43,3 +69,4 @@ export default function Navbar() {
     </>
   );
 }
+

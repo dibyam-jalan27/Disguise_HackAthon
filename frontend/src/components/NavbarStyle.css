@@ -2,8 +2,8 @@
     display: inline-flex;
     font-size: 2rem;
     -webkit-text-stroke: thick;
+    
   }
-  
   nav {
     position: absolute;
     display: flex;
@@ -11,9 +11,10 @@
     align-items:center ;
     font-size: 1.5rem;
     width: 100%;
-    
+    z-index: 10;
     /* Add some space between the two lists */
     padding-right: 20px;
+    color: whitesmoke;
   }
   
   .nav-menu {
@@ -22,13 +23,19 @@
     gap: 15px;
 
   }
+
+  .singup{
+    display: flex;
+    gap: 15px;
+    color: whitesmoke;
+  }
   
   .nav-menu li {
     display: inline;
     padding: 5px 5px;
   }
   
-  /* Add some space between the two lists */
+
   .right {
     display: flex;
     margin-left: 5px;
