@@ -1,7 +1,7 @@
 import React from 'react';
 import StarRating from './StarRating';
 
-const Rating = (myRating) => {
+const Rating = ({myRating}) => {
 
   return (
     <div className='absolute top-52 left-16 text-[20px] font-medium'>

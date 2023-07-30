@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useParams }  from "react";
+import React, { useEffect, useState }  from "react";
 import Rating from "../components/rating";
 import {useParams} from 'react-router-dom'
 import axios from "axios";
@@ -8,12 +8,14 @@ import img2 from "../asset/2.jpg"
 import img3 from "../asset/3.jpg"
 import img4 from "../asset/4.jpg"
 import HomeSection from "../components/HomeSection";
+// import Interativemap from "../components/Map"
 
 const Location = () => {
-  // const {id} = useParams();
-  const id = "64c51b553936d5188510f8e0";
+  const {id} = useParams();
+  // const id = "64c51b553936d5188510f8e0";
   const [city, setCity] = useState();
 
+  
   const data = [
     {
       id: 1,
@@ -48,20 +50,22 @@ const Location = () => {
       price: 350,
     },
   ];
-
-
+  
+  
   useEffect(() => {
     axios
-      .get(`/api/v1/city/${id}`)
-      .then((res) => {
-        setCity(res.data.city);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .get(`/api/v1/city/${id}`)
+    .then((res) => {
+      setCity(res.data.city);
       console.log(city)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
   }, []);
-
+  
+  console.log(city);
   return (
     <div>
       {city && city.name && (
@@ -92,7 +96,7 @@ const Location = () => {
     </div>
       <div>
       <p className="absolute top-28 left-16 text-[60px] font-medium">{city.name}</p>
-        <Rating/>
+        <Rating myRating={city.rating}/>
       </div>
       <div className="absolute top-[500px] left-16 text-[30px] text-4xl text-center text-yellow-800 font-bold text-shadow-lg">
         {city.description}
@@ -103,7 +107,7 @@ const Location = () => {
             ))}
           </div>
           <div>
-            <HomeSection />
+            <HomeSection myarr={city.destination}/>
           </div>
     </div>
   )};
