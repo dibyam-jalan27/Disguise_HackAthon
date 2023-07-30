@@ -1,10 +1,12 @@
 import './App.css';
+import React,{useEffect} from 'react'
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer" ;
-
+import About from "./Pages/About";
+import axios from "axios";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,18 +22,33 @@ import Location from './Pages/Location';
 import About from './Pages/About'
 
 function App() {
+  const [login,setLogin] = React.useState(false);
+  useEffect(() => {
+    axios.get("/api/v1/me")
+      .then((res) => {
+        setLogin(true);
+      })
+      .catch((err) => {
+        setLogin(false);
+      });
+  }, [login])
+  
   return (
     <div>
       <Router>
-        <Navbar/> 
+        <Navbar login={login} setLogin={setLogin}/> 
         <Routes>
          <Route path='/' element ={<Home/>}/>
-          <Route path='/login' element ={<Login/>}/>
+          <Route path='/login' element ={<Login setLogin={setLogin}/>}/>
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/about' element ={<About/>}/>
           <Route path='/otp' element ={<OTP/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
+<<<<<<< HEAD
           <Route path='/location' element ={<Location />}/>
+=======
+          <Route path='/location/:id' element ={<Location />}/>
+>>>>>>> 911c357cb9663a6b3a3e794c265935d31f610674
         </Routes>
         <Footer />
       </Router>
