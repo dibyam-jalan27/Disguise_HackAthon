@@ -9,6 +9,7 @@ import img3 from "../asset/3.jpg"
 import img4 from "../asset/4.jpg"
 import HomeSection from "../components/HomeSection";
 // import Interativemap from "../components/Map"
+import { getWeatherData } from '../components/Apidata';
 
 const Location = () => {
   const {id} = useParams();
@@ -50,6 +51,29 @@ const Location = () => {
       price: 350,
     },
   ];
+
+  const [weather , setWeather] = useState(null);
+  const [units , setUnits] = useState("metric");
+  const [cityy , setCityy] = useState("Jaipur") ;
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getWeatherData( cityy);
+      setWeather(data);
+      // setCityy(city?.name);
+    };
+    fetchData();
+  } , [cityy]);
+
+  const handleInp = (event)=> {
+    //if enter key is pressed
+    if(event.keyCode === 13 ){
+      const inp_by_user = event.currentTarget.value ;
+      setCityy(inp_by_user);
+      event.currentTarget.blur();
+    }
+  }
   
   
   useEffect(() => {
@@ -80,17 +104,19 @@ const Location = () => {
               Weather
             </p>
             <div className="flex justify-between p-[20px] text-[30px]">
-              <div>20°c</div>
-              <div>Cloudy</div>
+              <div>{weather.temp.toFixed()} °C
+              </div>
+              <div>{weather.description}</div>
+              <img src={weather.iconURL} alt="icon" />
             </div>
             <div className="flex justify-between p-[20px] text-[30px] bottom-5">
               <div>
                 <div>Humidity</div>
-                <div>icon</div>
+                <div>{weather.humidity}%</div>
               </div>
               <div>
                 <div>Pressure</div>
-                <div>icon</div>
+                <div>{weather.pressure} hPa</div>
             </div>
       </div>
     </div>

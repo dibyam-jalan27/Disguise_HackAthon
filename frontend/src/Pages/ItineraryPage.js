@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 const ItineraryPage = () => {
+
   const [items, setItems] = useState([]);
   const [isCityModalOpen, setIsCityModalOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
-  const [selectedDays, setSelectedDays] = useState('');
-  const daysList = [1, 2, 3, 4, 5, 6, 7]; // Number of days list
+  const [date, setDate] = useState('');
 
   const handleAddItem = () => {
-    if (selectedCity && selectedDays) {
+    if (selectedCity && date) {
       const newItem = {
         id: new Date().getTime(),
         name: selectedCity,
-        days: selectedDays,
+        date: date,
       };
       setItems((prevItems) => [...prevItems, newItem]);
       setSelectedCity('');
-      setSelectedDays('');
+      setDate('');
       setIsCityModalOpen(false);
     }
   };
@@ -35,25 +36,33 @@ const ItineraryPage = () => {
     closeCityModal();
   };
 
-  const handleDaysSelect = (days) => {
-    setSelectedDays(days);
-  };
+  const [ data , setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`/api/v1/city`)
+      .then((res) => {
+        setData(res.data.cities)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      console.log(data);
+  }, []);
 
   return (
-    <div className="container mx-auto py-12 w-full h-screen ">
-      <h1 className="text-3xl font-bold mb-4">Itinerary Planner</h1>
-      <div className="grid grid-cols-2 gap-8">
+    <div className="container mx-auto py-28 ">
+      <h1 className="text-6xl font-bold mb-4">Itinerary Planner</h1>
+      <div className="grid grid-cols-2 gap-4">
         {/* Left Column - Items */}
-        <div>
-          <h2 className="text-xl font-bold mb-4">Itinerary Items</h2>
+        <div className='bg-gray-200 rounded-full px-10'>
+          <h2 className="text-xl font-bold mb-2">Itinerary Items</h2>
           {items.length === 0 ? (
             <p>No items added to the itinerary yet.</p>
           ) : (
-            <ul className="space-y-2">
+            <ul>
               {items.map((item) => (
-                <li key={item.id} className="flex items-center">
-                  <span className="font-semibold mr-2">{item.name}</span>
-                  <span>- {item.days} days</span>
+                <li key={item.id} className="mb-2">
+                  <span className="font-semibold">{item.name}</span> - {item.date}
                 </li>
               ))}
             </ul>
@@ -62,7 +71,7 @@ const ItineraryPage = () => {
 
         {/* Right Column - Form */}
         <div>
-          <h2 className="text-xl font-bold mb-4">Add New Item</h2>
+          <h2 className="text-xl font-bold mb-2">Add New Item</h2>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"
             onClick={openCityModal}
@@ -77,47 +86,32 @@ const ItineraryPage = () => {
             overlayClassName="overlay"
           >
             <h2 className="text-xl font-bold mb-4">Select City</h2>
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap">
+                {
+                  data.map((city) => {
               <button
                 className="bg-gray-200 px-3 py-2 rounded m-2"
                 onClick={() => handleCitySelect('New York')}
               >
-                New York
+                {city.name}
               </button>
-              <button
-                className="bg-gray-200 px-3 py-2 rounded m-2"
-                onClick={() => handleCitySelect('London')}
-              >
-                London
-              </button>
-              <button
-                className="bg-gray-200 px-3 py-2 rounded m-2"
-                onClick={() => handleCitySelect('Paris')}
-              >
-                Paris
-              </button>
+                  })
+                }
+              
+              
               {/* Add more city buttons as needed */}
             </div>
           </Modal>
           {selectedCity && (
             <div className="mt-4">
               <p className="font-semibold">Selected City: {selectedCity}</p>
-              <div className="mt-2">
-                <p className="font-semibold mb-1">Select Number of Days:</p>
-                <div className="flex flex-wrap">
-                  {daysList.map((days) => (
-                    <button
-                      key={days}
-                      className={`px-3 py-2 rounded m-1 ${
-                        selectedDays === days ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-                      }`}
-                      onClick={() => handleDaysSelect(days)}
-                    >
-                      {days} days
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <input
+                type="text"
+                placeholder="Date"
+                className="border border-gray-300 rounded px-3 py-2 w-full mt-2 focus:outline-none focus:border-blue-500"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
               <button
                 type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
