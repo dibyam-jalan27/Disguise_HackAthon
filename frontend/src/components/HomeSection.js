@@ -1,5 +1,5 @@
 import React from "react";
-//import "./Categories.css";
+import "./homesection.css";
 import { Link } from "react-router-dom";
 
 const HomeSection = () => {

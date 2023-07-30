@@ -9,10 +9,12 @@ import Destiny from '../components/Destiny';
 
 
 const Home = () => {
+  const [keyword,setKeyword] = React.useState("");
+  const [page,setPage] = React.useState(1);
   return (
     <>
-    <Slider />
-    <Destiny />
+    <Slider setKeyword={setKeyword} setPage = {setPage}/>
+    <Destiny keyword = {keyword} page = {page}/>
     <Destinations />
     </>
   )

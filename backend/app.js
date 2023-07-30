@@ -15,10 +15,11 @@ app.use(cookieParser());
 // Import all routes
 const userRoutes = require("./routes/userRoutes");
 const cityRoutes = require("./routes/cityRoutes");
+const itineraryRoutes = require("./routes/itineraryRoutes");
 
 app.use("/api/v1",userRoutes);
 app.use("/api/v1",cityRoutes);
-
+app.use("/api/v1",itineraryRoutes);
 
 // Import error middleware
 app.use(errorMiddleware);
