@@ -46,4 +46,32 @@
   .right li {
     padding:5px 5px;
   }
+  /* NavbarStyle.css */
+
+/* ... your existing styles ... */
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.right li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+.right li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.signup-btn {
+  background-color: blue;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
   

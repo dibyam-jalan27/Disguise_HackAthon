@@ -37,6 +37,13 @@ export default function Navbar({ login, setLogin }) {
           {login ? (
             <ul className="singup">
               <li>
+                <Link to="/signup">
+                  <div>
+                    Sign Up
+                  </div>
+                </Link>
+              </li>
+              <li>
                 <Link to="/me">
                   <VscAccount />
                 </Link>

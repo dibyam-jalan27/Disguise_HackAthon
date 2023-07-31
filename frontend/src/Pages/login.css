@@ -1,0 +1,13 @@
+.signUpButton {
+    text-align: center;
+    font-size: 1.4rem;
+    width: 100px;
+    margin-inline: auto;
+    background-color: rgb(32, 102, 215);
+    color: white;
+    padding: 0.3rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

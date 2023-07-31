@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import {FcGoogle} from "react-icons/fc";
 import {IoLogoFacebook} from "react-icons/io" ;
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CircularProgress } from '@mui/material';
+import "./login.css"
 
 const Login = ({setLogin}) => {
 
@@ -126,6 +127,11 @@ const Login = ({setLogin}) => {
           >
             Forgot Password?
           </a>
+          </div>
+          <div className='signUpButton'>
+            <Link to="/signup">
+              sign up
+            </Link>
           </div>
          {/* {
             otpCol && !otpInp && ( <div className="flex justify-center items-center">

@@ -10,12 +10,13 @@ const Location = () => {
   const {id} = useParams();
   // const id = "64c51b553936d5188510f8e0";
   const [city, setCity] = useState();
+  const [weather, setWeather] = useState(null);
 
   
   const data = [
     {
       id: 1,
-      img: img1,
+      //img: img1,
       title: "Long sleeve T-Shirt",
       isNew: true,
       oldPrice: 200,
@@ -23,7 +24,7 @@ const Location = () => {
     },
     {
       id: 2,
-      img: img2,
+      //img: img2,
       title: "Long sleeve T-Shirt",
       isNew: true,
       oldPrice: 250,
@@ -31,7 +32,7 @@ const Location = () => {
     },
     {
       id: 3,
-      img: img3,
+     // img: img3,
       title: "Long sleeve T-Shirt",
       isNew: false,
       oldPrice: 300,
@@ -39,7 +40,7 @@ const Location = () => {
     },
     {
       id: 4,
-      img: img4,
+     // img: img4,
       title: "Long sleeve T-Shirt",
       isNew: false,
       oldPrice: 410,
@@ -60,6 +61,7 @@ const Location = () => {
     });
     
   }, []);
+  
   
   console.log(city);
   return (
