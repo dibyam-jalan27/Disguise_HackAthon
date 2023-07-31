@@ -3,13 +3,14 @@ import React,{useEffect} from 'react'
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import About from "./Pages/About";
+import WishlistPage from "./Pages/WishlistPage";
 import ItineraryPage from "./Pages/ItineraryPage";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer" ;
 import axios from "axios";
-import About from "./Pages/About";
-import ItineraryPage from "./Pages/ItineraryPage";
+//import About from "./Pages/About";
+//import ItineraryPage from "./Pages/ItineraryPage";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -44,6 +45,7 @@ function App() {
           <Route path='/signup' element ={<SignUp/>}/>
           <Route path='/about' element ={<About/>}/>
           <Route path='/otp' element ={<OTP/>}/>
+          <Route path='/wishlist' element ={<WishlistPage/>}/>
           <Route path='/password/reset/:token' element ={<Reset/>}/>
           <Route path='/location/:id' element ={<Location />}/>
           <Route path='/itinerary' element ={<ItineraryPage />}/>
