@@ -89,10 +89,10 @@ const ItineraryPage = () => {
             <div className="flex flex-wrap">
                 {
                   data.map((city) => {
-                <button
+              <button
                 className="bg-gray-200 px-3 py-2 rounded m-2"
                 onClick={() => handleCitySelect('New York')}
-                  >
+              >
                 {city.name}
               </button>
                   })
